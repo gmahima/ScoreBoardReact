@@ -24,7 +24,7 @@ const Player = () => {
 const App = () => {
   return (
     <div className="scoreboard">
-      <Header></Header>
+      <Header title="scoreboard" players={1}/>
       <Player />
     </div>
   )
