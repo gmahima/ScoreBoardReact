@@ -1,8 +1,39 @@
-const title = "<h1>first</h1>"
-const desc = "<p>para</p>"
-const ti = "main-title"
-const header = (<header>
-  <h1 id={ti}>{title}! its cool!!</h1>
-  <p>{desc}</p>
-</header>)
-ReactDOM.render(header, document.getElementById('root'));
+function Header() {
+  return (
+    <Header>
+      <h1>Scoreboard</h1>
+      <span className="stats">players: 1</span>
+    </Header>
+
+  )
+}
+const Counter = () => {
+  return (
+    <div className= "counter">
+      <button className= "counter-action decrement">-</button>
+      <span className="counter-score">45</span>
+      <button className= "counter-action decrement">-</button>)
+    </div>
+}
+const Player = () => {
+ return (  <div className="player">
+    <span className="player-name">Guil</span>
+    <Counter />
+  </div>)
+}
+const App = () => {
+  return (
+    <div className="scoreboard">
+      <Header></Header>
+      <Player />
+    </div>
+  )
+}
+
+
+
+
+
+ReactDOM.render(
+  <App />,
+   document.getElementById('root'));
