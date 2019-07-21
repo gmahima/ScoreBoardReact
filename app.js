@@ -1,3 +1,26 @@
+const initialPlayers= [
+  {
+  name: "Guil",
+  score: 50,
+  id: 1
+},
+{
+  name: "Treasure",
+  score: 85,
+  id: 2
+},
+{
+  name: "Ashley",
+  score: 95,
+  id: 3
+},
+{
+  name: "James",
+  score: 80,
+  id: 4
+}
+]
+
 function Header(props) {
   return (
     <Header>
@@ -7,13 +30,17 @@ function Header(props) {
 
   )
 }
-const Counter = (props) => {
-  return (
-    <div className= "counter">
-      <button className= "counter-action decrement">-</button>
-      <span className="counter-score">{props.score}</span>
-      <button className= "counter-action decrement">-</button>)
-    </div>
+class Counter extends React.Component {
+  render() {
+    return (
+      <div className= "counter">
+        <button className= "counter-action decrement">-</button>
+        <span className="counter-score">{props.score}</span>
+        <button className= "counter-action decrement">-</button>)
+      </div>
+    )
+  }
+
 }
 const Player = (props) => {
  return (  <div className="player">
@@ -21,11 +48,20 @@ const Player = (props) => {
     <Counter score={props.score}/>
   </div>)
 }
-const App = () => {
+
+const App = (props) => {
   return (
     <div className="scoreboard">
-      <Header title="scoreboard" players={1} />
-      <Player score={400} name="the best player" />
+      <Header title="scoreboard" players={props.initialPlayers.length} />
+      {
+        props.initialPlayers.map(
+          (player) => {
+            <Player name={player.name} score={player.score} key={player.id.toString()}/>
+          }
+        )
+      }
+
+
     </div>
   )
 }
@@ -35,5 +71,5 @@ const App = () => {
 
 
 ReactDOM.render(
-  <App />,
+  <App initialPlayers={initialPlayers}/>,
    document.getElementById('root'));
